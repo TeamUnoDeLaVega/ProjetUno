@@ -1,7 +1,0 @@
-#include "Cartes.hpp"
-
-
-Cartes::Cartes(float largeur, float longueur, int x, int y){
-  RectangleShape playerUp(Vector2f(largeur,longueur);	      playerUp.setFillColor(Color:White);
-  
-			  

@@ -4,7 +4,6 @@
 #include <iostream>
 #include <vector>
 #include <string.h>
-#include "Cartes.hpp"
 using namespace sf;
 
 
@@ -16,15 +15,30 @@ using namespace sf;
 
 
 
-int main() {
+
+// void cartes(std::string nom,int largeur,int longueur, int x, int y){
+//   //std::string tmp;
+//   //tmp=nom;
+//   RectangleShape tmp;
+//   tmp.setSize(Vector2f(largeur,longueur));
+//   tmp.setFillColor(Color(255,255,255));
+//   tmp.setOutlineThickness(1);
+//   tmp.setOutlineColor(Color::White);
+//   tmp.move(x,y);
+//   tmp.setTexture(&cartes);
+// }
+
+	  
+int main(){
+
   Texture cartes;
 
-  if(!cartes.loadFromFile("fond-carte.png")){
+if(!cartes.loadFromFile("fond-carte.png")){
    std::cout<<"Pas importée"<<std::endl;
+   return 0;
   }
-  
-  
-    RenderWindow window(VideoMode(1000, 800), "SFML works!",Style::Default);
+    
+  RenderWindow window(VideoMode(1000, 800), "SFML works!",Style::Default);
   
    RectangleShape pioche(Vector2f(80.0,140.0));
    pioche.setFillColor(Color(255,255,255));
@@ -32,14 +46,12 @@ int main() {
    pioche.setOutlineColor(Color(255,255,255));
    pioche.move(600,350);
    pioche.setTexture(&cartes);
-   FloatRect _pioche= pioche.getGlobalBounds();
-
-
-   
+  
+    
      RectangleShape shapeUp(Vector2f(90,135));
      shapeUp.setFillColor(Color(255,255,255));
-     shapeUp.setOutlineThickness(2);
-     shapeUp.setOutlineColor(Color(250, 250, 250));
+     //shapeUp.setOutlineThickness(2);
+     //shapeUp.setOutlineColor(Color(250, 250, 250));
      shapeUp.move(500,5);
      shapeUp.setTexture(&cartes);
    
@@ -47,16 +59,16 @@ int main() {
     
      RectangleShape shapeLeft(Vector2f(90,135));
      shapeLeft.setFillColor(Color(255,255,255));
-     shapeLeft.setOutlineThickness(2);
-     shapeLeft.setOutlineColor(Color(250, 250, 250));
+     //shapeLeft.setOutlineThickness(2);
+     //shapeLeft.setOutlineColor(Color(250, 250, 250));
      shapeLeft.move(5,475);
      shapeLeft.rotate(-90);
      shapeLeft.setTexture(&cartes);
     
      RectangleShape shapeRight(Vector2f(90,135));
      shapeRight.setFillColor(Color(255,255,255));
-     shapeRight.setOutlineThickness(2);
-     shapeRight.setOutlineColor(Color(250, 250, 250));
+     //shapeRight.setOutlineThickness(2);
+     //shapeRight.setOutlineColor(Color(250, 250, 250));
      shapeRight.move(965,395);
      shapeRight.rotate(90);
      shapeRight.setTexture(&cartes);
@@ -66,8 +78,7 @@ int main() {
      shapeTas.setOutlineThickness(2);
      shapeTas.setOutlineColor(Color::White);
      shapeTas.move(500,350);
-
-     
+    
     
     
     Font font;
@@ -114,13 +125,6 @@ int main() {
     tas.setCharacterSize(24);
     tas.setColor(Color::White);
     tas.move(510,300);
-
-    Text valeur;
-    valeur.setFont(font);
-    valeur.setString("7");
-    valeur.setCharacterSize(24);
-    valeur.setColor(Color::White);
-    // valeur.move(100,100);
    
  
     while (window.isOpen()){
@@ -129,45 +133,38 @@ int main() {
             if (event.type == Event::Closed)
                 window.close();
         }
-	
 	window.clear (Color(0,200,0,150));
 	window.draw(pioche);
-	window.draw(shapeUp);
-    	window.draw(shapeLeft);
-	window.draw(shapeRight);
-    	window.draw(shapeTas);
+    window.draw(shapeUp);
+	window.draw(shapeLeft);
+    window.draw(shapeRight);
+	window.draw(shapeTas);
 	
 	if (Mouse::isButtonPressed(Mouse::Left)){
-	  Vector2i positionSouris= Mouse::getPosition(window);
-	  if(_pioche.contains((Vector2f)positionSouris)){
-	    window.draw(test);
-	  }
+	// float x,y;
+	//Vector2f positionSouris = static_cast<Vector2f>(Mouse::getPosition(window));
+	//Vector2f positionPioche = pioche.getPosition();
+	//if(positionSouris.xpositionPioche){
+		window.draw(test);
+		//}
 	 }
-
+	//dessinerCarte(80.0,135.0,100,100);
 	
 	int x=5;
 	int y=700;
-	for(int i=0;i<5;i++){
+	for(int i=0;i<10;i++){
 	  RectangleShape carte(Vector2f(80,135));
-	  carte.setFillColor(R);
+	  carte.setFillColor(B);
 	  carte.setOutlineThickness(1);
 	  carte.setOutlineColor(Color::White);
 	  carte.move(x,y);
-	  valeur.move(x,100);
 	  x=x+95;
-	  
 	  window.draw(carte);
-	  window.draw(valeur);
 	}
-	// Cartes playerUp(&RectangleShape,90.0,135.0,500,5);
-	// playerUp.afficher(window);
-
-	// window.draw(playerUp);
        	window.draw(p);
 	window.draw(l);
 	window.draw(r);
 	window.draw(u);
-	//window.draw(valeur);
 	window.draw(tas);
 	window.display();
 	
@@ -177,5 +174,4 @@ int main() {
 
 
 }
-
 
