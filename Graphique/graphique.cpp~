@@ -1,0 +1,21 @@
+#include "graphique.hpp"
+#include 
+Texture cartes;
+
+if(!cartes.loadFromFile("fond-carte.png")){
+   std::cout<<"Pas importée"<<std::endl;
+   return 0;
+  }
+
+
+void cartes(std::string nom,int largeur,int longueur, int x, int y){
+  //std::string tmp;
+  //tmp=nom;
+  RectangleShape tmp;
+  tmp.setSize(Vector2f(largeur,longueur));
+  tmp.setFillColor(Color(255,255,255));
+  tmp.setOutlineThickness(1);
+  tmp.setOutlineColor(Color::White);
+  tmp.move(x,y);
+  tmp.setTexture(&cartes);
+}
